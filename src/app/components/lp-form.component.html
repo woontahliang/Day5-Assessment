@@ -1,0 +1,35 @@
+<form #myForm="ngForm" (ngSubmit)="processForm(myForm)" fxLayout="column" fxLayoutGap="10px">
+  <mat-form-field>
+    <input type="text" placeholder="Album name" #albumNameField="ngModel" name="albumName" matInput required ngModel>
+    <mat-hint>Eg. Power Of Love</mat-hint>
+    <mat-error *ngIf="albumNameField.hasError('required') && myForm.touched">
+      You must enter an artist name
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" placeholder="Artist name" #artistNameField="ngModel" name="artistName" matInput required ngModel>
+    <mat-hint>Eg. Celine Dion</mat-hint>
+    <mat-error *ngIf="artistNameField.hasError('required') && myForm.touched">
+      You must enter an artist name
+    </mat-error>
+  </mat-form-field>
+
+  <mat-slider #albumRatingField="ngModel" name="albumRating" thumbLabel tickInterval="1" min="0" max="10" ngModel>
+  </mat-slider>
+
+  <mat-form-field>
+    <input type="text" #albumCoverImageField="ngModel" type="url" pattern="https*://.*" placeholder="Album cover image" name="albumCoverImage"
+      matInput ngModel>
+    <mat-hint>Eg. http://example.com/power_of_love.png</mat-hint>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="8px">
+    <button type="reset" mat-button mat-raised-button color="primary">
+      <mat-icon>clear</mat-icon> Clear
+    </button>
+    <button type="submit" mat-button mat-raised-button color="warn" [disabled]="myForm.invalid">
+      <mat-icon>home</mat-icon> Add
+    </button>
+  </div>
+</form>

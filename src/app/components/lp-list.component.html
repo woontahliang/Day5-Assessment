@@ -1,0 +1,12 @@
+<div *ngIf="albumList.length <= 0">
+  <p>There are no tasks!</p>
+</div>
+<mat-card class="result" *ngFor="let item of albumList;">
+  <mat-card-content>
+    <section>Album Cover Image: {{ item.image_url }}</section>
+    <section>Album Name: {{ item.album_name }}</section>
+    <section>Artist Name: {{ item.artist_name }}</section>
+    <section>Album Rating: {{ item.album_rating }}</section>
+    <section>Share Album</section>
+  </mat-card-content>
+</mat-card>
