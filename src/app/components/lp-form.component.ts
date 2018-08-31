@@ -18,6 +18,8 @@ export class LpFormComponent implements OnInit {
   @Output()
   itemFromForm = new EventEmitter<AlbumItem>();
 
+  value = 5;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class LpFormComponent implements OnInit {
 
     for (let i in myForm.value) {
       console.log('i = ', i, ', v = ', myForm.value[i]);
+    }
+
+    if (myForm.value.albumCoverImage == "") {
+      myForm.value.albumCoverImage = "/assets/unknown.png";
     }
 
     var toProcess: AlbumItem = { album_name: myForm.value.albumName, artist_name: myForm.value.artistName, album_rating: myForm.value.albumRating, image_url: myForm.value.albumCoverImage };

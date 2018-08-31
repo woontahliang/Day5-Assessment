@@ -15,7 +15,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-slider #albumRatingField="ngModel" name="albumRating" thumbLabel tickInterval="1" min="0" max="10" ngModel>
+  <mat-slider #albumRatingField="ngModel" name="albumRating" [(ngModel)]="value" thumbLabel tickInterval="1" min="0" max="10" ngModel>
   </mat-slider>
 
   <mat-form-field>

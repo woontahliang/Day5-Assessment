@@ -3,10 +3,11 @@
 </div>
 <mat-card class="result" *ngFor="let item of albumList;">
   <mat-card-content>
+    <section><img src="{{ item.image_url }}" alt="Picture of {{ item.album_name }}" class="thumbnail"></section>
     <section>Album Cover Image: {{ item.image_url }}</section>
     <section>Album Name: {{ item.album_name }}</section>
     <section>Artist Name: {{ item.artist_name }}</section>
     <section>Album Rating: {{ item.album_rating }}</section>
-    <section>Share Album</section>
+    <section><img src="/assets/share-icon.png" alt="Picture of Share Album" class="share-icon"></section>
   </mat-card-content>
 </mat-card>
