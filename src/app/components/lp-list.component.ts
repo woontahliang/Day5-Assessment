@@ -1,11 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-export interface AlbumItem {
-  album_name: string;
-  artist_name: string;
-  album_rating: number;
-  image_url: string;
-}
+import { AlbumItem } from '../app.component';
 
 @Component({
   selector: 'app-lp-list',

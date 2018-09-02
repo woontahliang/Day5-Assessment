@@ -13,8 +13,6 @@ export interface AlbumItem {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Day5-Assessment';
-
   listItem: AlbumItem;
 
   addToList(item: AlbumItem) {
