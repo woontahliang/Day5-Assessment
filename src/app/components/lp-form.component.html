@@ -1,31 +1,37 @@
 <form #myForm="ngForm" (ngSubmit)="processForm(myForm)" fxLayout="column" fxLayoutGap="10px">
   <mat-form-field>
-    <input type="text" placeholder="Album name" #albumNameField="ngModel" name="albumName" matInput required ngModel>
+    <input type="text" placeholder="Album name" #albumNameField="ngModel" name="albumName" matInput required
+      [(ngModel)]="myData.albumName">
     <mat-hint>Eg. Power Of Love</mat-hint>
-    <mat-error *ngIf="albumNameField.hasError('required') && myForm.touched">
-      You must enter an artist name
+    <mat-error *ngIf="albumNameField.hasError('required') && albumNameField.touched">
+      You must enter an album name!
     </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input type="text" placeholder="Artist name" #artistNameField="ngModel" name="artistName" matInput required ngModel>
+    <input type="text" placeholder="Artist name" #artistNameField="ngModel" name="artistName" matInput required
+      [(ngModel)]="myData.artistName">
     <mat-hint>Eg. Celine Dion</mat-hint>
-    <mat-error *ngIf="artistNameField.hasError('required') && myForm.touched">
-      You must enter an artist name
+    <mat-error *ngIf="artistNameField.hasError('required') && artistNameField.touched">
+      You must enter an artist name!
     </mat-error>
   </mat-form-field>
 
-  <mat-slider #albumRatingField="ngModel" name="albumRating" [(ngModel)]="value" thumbLabel tickInterval="1" min="0" max="10" ngModel>
+  <mat-slider #albumRatingField="ngModel" name="albumRating" [(ngModel)]="myData.albumRating" thumbLabel tickInterval="1"
+    min="0" max="10">
   </mat-slider>
 
   <mat-form-field>
-    <input type="text" #albumCoverImageField="ngModel" type="url" pattern="https*://.*" placeholder="Album cover image" name="albumCoverImage"
-      matInput ngModel>
+    <input type="text" #albumCoverImageField="ngModel" type="url" pattern="https*://.*" placeholder="Album cover image"
+      name="albumCoverImage" matInput [(ngModel)]="myData.albumCoverImage">
     <mat-hint>Eg. http://example.com/power_of_love.png</mat-hint>
+    <mat-error *ngIf="albumCoverImageField.hasError('pattern') && albumCoverImageField.touched">
+      You must enter a valid URL to an image!
+    </mat-error>
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="8px">
-    <button type="reset" mat-button mat-raised-button color="primary">
+    <button type="reset" mat-button mat-raised-button color="primary" (click)=resetToDefaultForm(myForm)>
       <mat-icon>clear</mat-icon> Clear
     </button>
     <button type="submit" mat-button mat-raised-button color="warn" [disabled]="myForm.invalid">
